@@ -26,7 +26,6 @@
 #include <utils/Flattenable.h>
 #include <utils/RefBase.h>
 
-#include <string>
 
 struct ANativeWindowBuffer;
 
@@ -74,7 +73,7 @@ public:
 
     // creates w * h buffer
     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
-            uint32_t inUsage, std::string requestorName = "<Unknown>");
+            uint32_t inUsage);
 
     // create a buffer from an existing handle
     GraphicBuffer(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
@@ -160,7 +159,7 @@ private:
     const GraphicBuffer& operator = (const GraphicBuffer& rhs) const;
 
     status_t initSize(uint32_t inWidth, uint32_t inHeight, PixelFormat inFormat,
-            uint32_t inUsage, std::string requestorName);
+            uint32_t inUsage);
 
     void free_handle();
 

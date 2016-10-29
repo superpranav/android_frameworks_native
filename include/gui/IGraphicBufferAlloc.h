@@ -21,14 +21,13 @@
 #include <sys/types.h>
 
 #include <binder/IInterface.h>
-#include <ui/GraphicBuffer.h>
 #include <ui/PixelFormat.h>
 #include <utils/RefBase.h>
 
-#include <string>
-
 namespace android {
 // ----------------------------------------------------------------------------
+
+class GraphicBuffer;
 
 class IGraphicBufferAlloc : public IInterface
 {
@@ -38,13 +37,7 @@ public:
     /* Create a new GraphicBuffer for the client to use.
      */
     virtual sp<GraphicBuffer> createGraphicBuffer(uint32_t w, uint32_t h,
-            PixelFormat format, uint32_t usage, std::string requestorName,
-            status_t* error) = 0;
-
-    sp<GraphicBuffer> createGraphicBuffer(uint32_t w, uint32_t h,
-            PixelFormat format, uint32_t usage, status_t* error) {
-        return createGraphicBuffer(w, h, format, usage, "<Unknown>", error);
-    }
+            PixelFormat format, uint32_t usage, status_t* error) = 0;
 };
 
 // ----------------------------------------------------------------------------
