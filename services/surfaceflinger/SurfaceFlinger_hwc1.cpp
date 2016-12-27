@@ -472,6 +472,7 @@ void SurfaceFlinger::init() {
         if (sched_setscheduler(mSFEventThread->getTid(), SCHED_FIFO, &param) != 0) {
             ALOGE("Couldn't set SCHED_FIFO for SFEventThread");
         }
+
     }
 
     // Initialize the H/W composer object.  There may or may not be an
