@@ -1878,6 +1878,13 @@ EGLClientBuffer eglCreateNativeClientBufferANDROID(const EGLint *attrib_list)
         return setError(EGL_BAD_PARAMETER, (EGLClientBuffer)0);
     }
 
+    GraphicBuffer* gBuffer = new GraphicBuffer(width, height, format, usage);
+#define CHECK_ERROR_CONDITION(message) \
+    if (err != NO_ERROR) { \
+        ALOGE(message); \
+        goto error_condition; \
+    }
+
     // The holder is used to destroy the buffer if an error occurs.
     GraphicBuffer* gBuffer = new GraphicBuffer();
     sp<IServiceManager> sm = defaultServiceManager();
